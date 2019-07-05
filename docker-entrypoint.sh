@@ -3,12 +3,13 @@ set -e
 
 USER_ID=${USER_ID:-'999999'}
 LICENSE_KEY=${LICENSE_KEY:-'000000000000'}
-PRODUCT_IDS=${PRODUCT_IDS:-'GeoLite2-City GeoLite2-Country GeoLite-Legacy-IPv6-City GeoLite-Legacy-IPv6-Country 506 517 533'}
+#PRODUCT_IDS=${PRODUCT_IDS:-'GeoLite2-City GeoLite2-Country GeoLite-Legacy-IPv6-City GeoLite-Legacy-IPv6-Country 506 517 533'}
+EDITION_IDS=${PRODUCT_IDS:-'GeoLite2-City GeoLite2-Country'}
 
 cat > /etc/GeoIP.conf <<EOL
 # The following UserId and LicenseKey are required placeholders:
-UserId $USER_ID
-LicenseKey $LICENSE_KEY
+#UserId $USER_ID
+#LicenseKey $LICENSE_KEY
 
 # Include one or more of the following ProductIds:
 # * GeoLite2-City - GeoLite 2 City
@@ -18,7 +19,8 @@ LicenseKey $LICENSE_KEY
 # * 506 - GeoLite Legacy Country
 # * 517 - GeoLite Legacy ASN
 # * 533 - GeoLite Legacy City
-ProductIds $PRODUCT_IDS
+#ProductIds $PRODUCT_IDS
+EditionIDs $EDITION_IDS
 EOL
 
 geoipupdate -v
